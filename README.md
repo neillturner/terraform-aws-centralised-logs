@@ -94,3 +94,4 @@ module "centralised-logs" {
   s3_bucket_alb_logs_arn        = "arn:aws:s3:::test.alb.logs"
   s3_bucket_alb_logs_id         = "test.alb.logs"
 }
+```
