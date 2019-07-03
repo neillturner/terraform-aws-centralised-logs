@@ -9,16 +9,22 @@ variable "aws_account_id" {
 
 variable "aws_elasticsearch_domain" {
   description = "domain name for aws elasticsearch cluster."
-  default     = "logs-data"
+  default = "logs-data"
+}
+
+variable "volume_size" {
+  description = "size of the EBS volumes."
+  default     = "35"
 }
 
 variable "zone_id" {
   description = "Route 53 zone id for DNS for aws elasticsearch cluster "
+  default = ""
 }
 
 variable "elasticsearch_version" {
   description = "Elastic Search Service cluster version number."
-  default     = "5.5"
+  default     = "6.7"
 }
 
 variable "vpc_id" {
@@ -37,10 +43,29 @@ variable "ingress_allow_cidr_blocks" {
   type        = "list"
 }
 
-variable "s3_bucket_elb_logs_arn" {
-  description = "Amazon Resource Names (ARNs) of the S3 bucket containing ELB and ALB logs."
+variable "ingress_allow_security_groups" {
+  default     = []
+  description = "Specifies the ingress security groups allowed to access the elasticsearch cluster."
+  type        = "list"
 }
 
-variable "s3_bucket_elb_logs_id" {
-  description = "id of the S3 bucket containing ELB and ALB logs."
+variable "cidr_access_es" {
+  default     = []
+  description = "Specifies the CIDR blocks allowed to access the elasticsearch cluster."
+  type        = "list"
 }
+
+variable "delete_after" {
+  description = "how many days to keep logs."
+  default     = "30"
+}
+
+variable "s3_bucket_alb_logs_arn" {
+  description = "Amazon Resource Names (ARNs) of the S3 bucket containing ALB logs."
+}
+
+variable "s3_bucket_alb_logs_id" {
+  description = "id of the S3 bucket containing ALB logs."
+}
+
+
